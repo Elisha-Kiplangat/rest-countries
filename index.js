@@ -26,3 +26,37 @@ const getCountry = (country) =>{
 }
 
 loadCountryAPI()
+
+// sorting per continent
+
+document.addEventListener('DOMContentLoaded', () => {
+    const continentSelect = document.getElementById('continent');
+    const countryList = document.getElementById('countries');
+
+    let countriesByContinent = {};
+
+       fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            countriesByContinent = data;
+        })
+        .catch(error => console.error( error));
+
+    continentSelect.addEventListener('change', () => {
+        const selectedContinent = continentSelect.value;
+        updateCountryList(selectedContinent);
+    });
+
+    function updateCountryList(continent) {
+        countryList.innerHTML = '';
+
+        if (continent && countriesByContinent[continent]) {
+            const countries = countriesByContinent[continent];
+            countries.forEach(country => {
+                const listItem = document.createElement('li');
+                listItem.textContent = country;
+                countryList.appendChild(listItem);
+            });
+        }
+    }
+});
