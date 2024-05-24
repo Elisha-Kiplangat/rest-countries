@@ -1,0 +1,75 @@
+@import url(https://fonts.google.com/specimen/Nunito+Sans);
+
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Nunito, sans-serif;
+    background-color: hsl(0, 0%, 98%);
+}
+main{
+    width: 80%;
+    margin-left: 10%;
+}
+.header{
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    
+}
+h1{
+    color: rgb(31, 30, 30);
+}
+button{
+    justify-content: center;
+    align-self: center;
+
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    margin-top: 10px;
+}
+#search{
+    align-self: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+#continent{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.countries{
+    max-width: 1240px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.country-div{
+    border-radius: 10px;
+    padding: 15px;
+    background-color: hsl(0, 0%, 100%);
+}
+img{
+    width: 100%;
+    height: 150px;
+}
+
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+
+@media screen and (max-width: 375px){
+    .countries{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

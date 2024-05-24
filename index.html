@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Countries API</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fontawesome.com">
+</head>
+<body>
+    <main>
+        <div class="header">
+            <h1>Where in the world?</h1>
+            <button id="theme-toggle">Dark Mode</button>
+        </div>
+        <div class="search">
+            <input type="text" id="search" placeholder="Search for a Country"><i class="material-icons ionicon"></i>
+            <select id="continent" name="continent">
+                <option value="africa">Africa</option>
+                <option value="antarctica">Antarctica</option>
+                <option value="asia">Asia</option>
+                <option value="europe">Europe</option>
+                <option value="north_america">North America</option>
+                <option value="oceania">Oceania</option>
+                <option value="south_america">South America</option>
+            </select>
+        </div>
+  
+        <div class="countries" id="countries">
+
+        </div>
+
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
