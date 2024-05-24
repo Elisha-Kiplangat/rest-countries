@@ -1,8 +1,19 @@
+const countriesByContinent = {};
+
+
 const loadCountryAPI = () =>{
     
     fetch('data.json')
     .then(res => res.json())
     .then(data => displayCountries(data))
+    .then(data => {
+        data.countries.forEach(country => {
+            if (!countriesByContinent[country.region]) {
+                countriesByContinent[country.region] = [];
+            }
+            countriesByContinent[country.region].push(country);
+        });
+    })
 }
 
 const displayCountries = countries =>{
@@ -12,7 +23,6 @@ const displayCountries = countries =>{
 }
 
 const getCountry = (country) =>{
-    console.log(country)
     return `
         <div class="country-div">
         <img src="${country.flags.png}">
@@ -33,30 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const continentSelect = document.getElementById('continent');
     const countryList = document.getElementById('countries');
 
-    let countriesByContinent = {};
-
-       fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            countriesByContinent = data;
-        })
-        .catch(error => console.error( error));
-
     continentSelect.addEventListener('change', () => {
         const selectedContinent = continentSelect.value;
         updateCountryList(selectedContinent);
     });
 
     function updateCountryList(continent) {
-        countryList.innerHTML = '';
-
         if (continent && countriesByContinent[continent]) {
             const countries = countriesByContinent[continent];
-            countries.forEach(country => {
-                const listItem = document.createElement('li');
-                listItem.textContent = country;
-                countryList.appendChild(listItem);
-            });
+            displayCountries(countries);
+        } else {
+            countryList.innerHTML = '<p>No countries available for the selected continent.</p>';
         }
     }
 });
