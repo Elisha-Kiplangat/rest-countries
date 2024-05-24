@@ -42,10 +42,16 @@ loadCountryAPI()
 document.addEventListener('DOMContentLoaded', () => {
     const continentSelect = document.getElementById('continent');
     const countryList = document.getElementById('countries');
+    const themeToggle = document.getElementById('theme-toggle');
 
     continentSelect.addEventListener('change', () => {
         const selectedContinent = continentSelect.value;
         updateCountryList(selectedContinent);
+    });
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
     });
 
     function updateCountryList(continent) {
